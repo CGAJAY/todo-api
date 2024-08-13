@@ -2,6 +2,7 @@ import express from "express";
 import { homeRouter, tasksRouter } from "./routes/index.js";
 
 const app = express();
+const PORT = process.env.PORT | 3005;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,6 +24,8 @@ app.use("*", (req, res) => {
   res.status(404).json({ message: "Not Found" });
 });
 
-app.listen(3005, () => {
-  console.log(`PORT ${3005}`);
+// TODO: use custom middleware to handle errors
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
