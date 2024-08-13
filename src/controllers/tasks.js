@@ -31,8 +31,9 @@ export const addTask = async (req, res) => {
 
   try {
     const task = await Task.insertOne({ title });
+    const instertedTask = await Task.findOne({ _id: task.insertedId });
 
-    res.status(201).send(task);
+    res.status(201).send(instertedTask);
   } catch (err) {
     res.status(500).send(err);
   }
