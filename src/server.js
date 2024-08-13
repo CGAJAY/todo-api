@@ -7,19 +7,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /**
- * route: /
- * route: /about
- * route: /contact
+ * RouteS to the home page ("/", "/about", "/contact")
  */
 app.use("/", homeRouter);
 
 /**
- * route: get /tasks
- * route: /tasks/new
- * route: /tasks/:id
+ * RouteS to the tasks page ("/tasks", "/tasks/new", "/tasks/:id")
  */
 app.use("/tasks", tasksRouter);
 
+/**
+ * Route to handle 404 errors
+ */
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Not Found" });
 });
