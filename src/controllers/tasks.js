@@ -39,6 +39,29 @@ export const addTask = async (req, res) => {
   }
 };
 
-export const getSingleTask = (req, res) => {
-  res.send("Single task");
+/**
+ *  Get a single task from the database
+ * @param {*} req
+ * @param {*} res
+ */
+export const getSingleTask = async (req, res) => {
+  let { id } = req.params;
+
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).send({ message: "Invalid id" });
+  }
+
+  // Convert the string id to ObjectId
+  id = ObjectId.createFromHexString(id);
+
+  //  Find task by id
+  const task = await Task.findOne({
+    _id: id,
+  });
+
+  if (!task) {
+    return res.status(404).send({ message: "Task not found" });
+  }
+
+  res.status(200).send(task);
 };
