@@ -1,5 +1,10 @@
 import { Task } from "../database/Models/index.js";
 
+/**
+ *  Get all tasks from the database and send them as a response
+ * @param {*} req
+ * @param {*} res
+ */
 export const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find().toArray();
@@ -9,6 +14,12 @@ export const getAllTasks = async (req, res) => {
   }
 };
 
+/**
+ * Add a new task to the database
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 export const addTask = async (req, res) => {
   const { title } = req.body;
 
