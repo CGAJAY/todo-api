@@ -21,7 +21,13 @@ export const getAllTasks = async (req, res) => {
  * @returns
  */
 export const addTask = async (req, res) => {
+  // Extract the title from the request body
   const { title } = req.body;
+
+  // Check if the title is not provided
+  if (!title) {
+    return res.status(400).send({ message: "Title is required" });
+  }
 
   try {
     const task = await Task.insertOne({ title });
