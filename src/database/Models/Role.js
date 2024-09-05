@@ -1,15 +1,15 @@
 import { model, Schema } from "mongoose";
 
-const taskSchema = new Schema(
+const roleSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+    slug: {
+      type: String,
       required: true,
+      unique: true,
     },
   },
   {
@@ -17,4 +17,4 @@ const taskSchema = new Schema(
   }
 );
 
-export const Task = model("Task", taskSchema);
+export const Role = model("Role", roleSchema);
