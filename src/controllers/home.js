@@ -1,11 +1,11 @@
 export const getHome = (req, res) => {
-  res.send("Hello Home");
+  res.sendFile("index.html", { root: "./src/views/" });
 };
 
 export const getAbout = (req, res) => {
-  res.send("Hello About");
+  res.sendFile("about.html", { root: "./src/views/" });
 };
 
 export const getContact = (req, res) => {
-  res.send("Hello Contact");
+  res.sendFile("contact.html", { root: "./src/views/" });
 };
