@@ -10,7 +10,7 @@ configDotenv(); // Load environment variables
 
 await connectDB(); // connect to the database
 
-await seeders.up(); // seed the database
+process.env.NODE_ENV == "development" && (await seeders.up()); // seed the database if the current environment is development
 
 const app = express();
 const PORT = process.env.PORT | 3005;
