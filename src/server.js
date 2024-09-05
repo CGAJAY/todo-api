@@ -1,10 +1,10 @@
 import express from "express";
 import { homeRouter, tasksRouter } from "./routes/index.js";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+
 import { configDotenv } from "dotenv";
 import { connectDB } from "./database/connect.js";
 import { seeders } from "./database/Seeders/index.js";
+import { __dirname } from "./constants.js";
 
 configDotenv(); // Load environment variables
 
@@ -17,10 +17,6 @@ const PORT = process.env.PORT | 3005;
 
 app.use(express.json()); // required to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // required to parse form data
-
-// required to use __dirname with ES6 modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 app.use("/assets", express.static(__dirname + "/assets/")); // serve static files (images, css, js) from the assets directory
 
