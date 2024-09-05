@@ -4,7 +4,7 @@ import { addTask, getAllTasks, getSingleTask } from "../controllers/index.js";
 const tasksRouter = Router();
 
 /**
- * route: http://localhost:3005/tasks
+ * base route: http://localhost:3005/tasks
  */
 tasksRouter.get("/", getAllTasks);
 tasksRouter.post("/new", addTask);
